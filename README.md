@@ -24,41 +24,47 @@ Then open:
 
 - http://localhost:4173
 
-## Deploy online (GitHub Pages)
+---
 
-This repository includes a GitHub Actions workflow at `.github/workflows/deploy-pages.yml`.
+## Deploy as a live website (fastest: Netlify)
 
-### 1) Push this repo to GitHub
+If your goal is “I want a real website URL now”, this is the easiest route:
 
-Make sure your default branch is `main`.
+1. Push this repository to GitHub.
+2. Go to [https://app.netlify.com](https://app.netlify.com) → **Add new site** → **Import an existing project**.
+3. Select your GitHub repo.
+4. Build settings:
+   - **Build command:** *(leave empty)*
+   - **Publish directory:** `.`
+5. Click **Deploy site**.
+6. You will immediately get a live URL like:
+   - `https://your-site-name.netlify.app`
 
-### 2) Enable Pages in your repo settings
+This repo includes `netlify.toml`, so Netlify can deploy it as a static website without extra setup.
 
-- Go to **Settings → Pages**
-- Under **Build and deployment**, set **Source** to **GitHub Actions**
+## Deploy as a live website (Vercel)
 
-### 3) Trigger deployment
+1. Push this repository to GitHub.
+2. Go to [https://vercel.com/new](https://vercel.com/new) and import the repo.
+3. Framework preset: **Other**.
+4. Build command: *(empty)*, Output directory: *(empty)*.
+5. Deploy.
 
-- Push a commit to `main`, or
-- Go to **Actions → Deploy static site to GitHub Pages → Run workflow**
+This repo includes `vercel.json`, so routing works as a website for all paths.
 
-### 4) Open your live URL
+## Deploy as a live website (GitHub Pages)
 
-Your app will be published at:
+This repository includes a workflow at `.github/workflows/deploy-pages.yml`.
 
-- `https://<your-github-username>.github.io/<your-repo-name>/`
+1. Ensure your default branch is `main`.
+2. In GitHub repo settings: **Settings → Pages → Source: GitHub Actions**.
+3. Push to `main` (or run workflow manually in **Actions**).
+4. Your live site will be available at:
+   - `https://<your-github-username>.github.io/<your-repo-name>/`
 
-> If you deploy to a project path (not a custom domain), keep links/assets relative as they are now.
+## Custom domain (optional)
 
-## Alternative quick hosts
-
-Because this is a static app, you can also drag-and-drop deploy to:
-
-- Netlify
-- Cloudflare Pages
-- Vercel
-
-No backend or API key setup is required for the current Open-Meteo integration.
+All three platforms (Netlify, Vercel, GitHub Pages) let you connect your own domain, e.g. `weather.yourdomain.com`.
 
 ## Notes
 
