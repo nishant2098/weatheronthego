@@ -101,7 +101,9 @@ function weatherTheme(weatherCode, isDay) {
 }
 
 function setDynamicTheme(weatherCode, isDay) {
-  document.body.className = weatherTheme(weatherCode, isDay);
+  const themeClass = weatherTheme(weatherCode, isDay);
+  document.body.className = themeClass;
+  document.body.setAttribute('data-theme', themeClass.replace('theme-', '').replace('-', ' '));
 }
 
 async function geocode(query) {
@@ -174,6 +176,8 @@ function setupMap(lat, lon, name) {
 
   sourceMeta.textContent =
     'Primary weather values are model/grid-based from Open-Meteo for this coordinate. Radar overlay is from RainViewer when tile availability permits.';
+
+  setTimeout(() => map.invalidateSize(), 100);
 }
 
 function renderForecast(weather) {
@@ -252,11 +256,11 @@ function renderWeather(geo, weather) {
   windDir.textContent = Math.round(weather.current.wind_direction_10m);
 
   setDynamicTheme(weather.current.weather_code, isDay);
+  resultBox.classList.remove('hidden');
+
   setupMap(geo.latitude, geo.longitude, geo.name);
   renderForecast(weather);
   fetchNearestMetar(geo.latitude, geo.longitude);
-
-  resultBox.classList.remove('hidden');
 }
 
 async function runSearch() {
