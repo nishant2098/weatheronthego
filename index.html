@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather On The Go</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <h1>Weather On The Go</h1>
+        <p>
+          Global weather for cities and rural regions, with transparent data-confidence
+          indicators.
+        </p>
+      </header>
+
+      <section class="search-card">
+        <label for="locationInput">Search a place (city, village, district, landmark)</label>
+        <div class="search-row">
+          <input id="locationInput" type="text" placeholder="e.g. Kisoro, Uganda" />
+          <button id="searchBtn">Get Weather</button>
+        </div>
+        <small>
+          Tip: If no weather station exists nearby, this app uses model + satellite-informed
+          estimates and labels confidence.
+        </small>
+      </section>
+
+      <section id="status" class="status"></section>
+
+      <section id="result" class="result hidden" aria-live="polite">
+        <div class="result-head">
+          <h2 id="placeTitle"></h2>
+          <span id="confidenceBadge" class="badge"></span>
+        </div>
+        <p id="sourceLine" class="source"></p>
+
+        <div class="grid">
+          <article>
+            <h3>Now</h3>
+            <p><strong id="currentTemp">--</strong> °C</p>
+            <p id="currentSummary">--</p>
+          </article>
+          <article>
+            <h3>Today</h3>
+            <p>Min: <strong id="tempMin">--</strong> °C</p>
+            <p>Max: <strong id="tempMax">--</strong> °C</p>
+            <p>Rain chance: <strong id="rainChance">--</strong>%</p>
+          </article>
+          <article>
+            <h3>Wind</h3>
+            <p><strong id="windSpeed">--</strong> km/h</p>
+            <p>Direction: <strong id="windDir">--</strong>°</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
