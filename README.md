@@ -26,45 +26,54 @@ Then open:
 
 ---
 
-## Deploy as a live website (fastest: Netlify)
+## Deploy it as a real website (done-for-you setup already included)
 
-If your goal is “I want a real website URL now”, this is the easiest route:
+This repo is already configured for website hosting via:
 
-1. Push this repository to GitHub.
-2. Go to [https://app.netlify.com](https://app.netlify.com) → **Add new site** → **Import an existing project**.
-3. Select your GitHub repo.
-4. Build settings:
-   - **Build command:** *(leave empty)*
-   - **Publish directory:** `.`
+- `netlify.toml` (Netlify)
+- `vercel.json` (Vercel)
+- `.github/workflows/deploy-pages.yml` (GitHub Pages)
+
+You only need to connect your GitHub repo and click deploy.
+
+## Fastest option (recommended): Netlify (2 minutes)
+
+1. Push this repo to your GitHub account.
+2. Open: [https://app.netlify.com/start](https://app.netlify.com/start)
+3. Choose your repo.
+4. Keep defaults (no build command, publish directory `.`).
 5. Click **Deploy site**.
-6. You will immediately get a live URL like:
-   - `https://your-site-name.netlify.app`
 
-This repo includes `netlify.toml`, so Netlify can deploy it as a static website without extra setup.
+You get a live URL immediately, like:
 
-## Deploy as a live website (Vercel)
+- `https://your-site-name.netlify.app`
 
-1. Push this repository to GitHub.
-2. Go to [https://vercel.com/new](https://vercel.com/new) and import the repo.
-3. Framework preset: **Other**.
-4. Build command: *(empty)*, Output directory: *(empty)*.
-5. Deploy.
+## Vercel option (2 minutes)
 
-This repo includes `vercel.json`, so routing works as a website for all paths.
+1. Push this repo to GitHub.
+2. Open: [https://vercel.com/new](https://vercel.com/new)
+3. Import your repo.
+4. Framework: **Other**.
+5. Build command/output directory: leave empty.
+6. Deploy.
 
-## Deploy as a live website (GitHub Pages)
+Live URL example:
 
-This repository includes a workflow at `.github/workflows/deploy-pages.yml`.
+- `https://your-project.vercel.app`
 
-1. Ensure your default branch is `main`.
-2. In GitHub repo settings: **Settings → Pages → Source: GitHub Actions**.
-3. Push to `main` (or run workflow manually in **Actions**).
-4. Your live site will be available at:
-   - `https://<your-github-username>.github.io/<your-repo-name>/`
+## GitHub Pages option
+
+1. Push this repo and ensure default branch is `main`.
+2. In GitHub: **Settings → Pages → Source = GitHub Actions**.
+3. Push to `main` (or run the workflow manually under **Actions**).
+
+Live URL format:
+
+- `https://<your-github-username>.github.io/<your-repo-name>/`
 
 ## Custom domain (optional)
 
-All three platforms (Netlify, Vercel, GitHub Pages) let you connect your own domain, e.g. `weather.yourdomain.com`.
+All three platforms support custom domains, e.g. `weather.yourdomain.com`.
 
 ## Notes
 
