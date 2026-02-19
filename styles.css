@@ -1,6 +1,7 @@
 :root {
   color-scheme: light;
-  --bg: #f4f7ff;
+  --bg: #eef3ff;
+  --bg-hero: linear-gradient(180deg, #d9ebff, #eef3ff);
   --card: #ffffff;
   --text: #1c2440;
   --muted: #5f6b8a;
@@ -17,12 +18,36 @@
 body {
   margin: 0;
   font-family: Inter, Arial, sans-serif;
-  background: linear-gradient(180deg, #e9f1ff, var(--bg));
+  background: var(--bg-hero);
   color: var(--text);
+  transition: background 250ms ease;
+}
+
+body.theme-clear-day {
+  --bg-hero: linear-gradient(180deg, #bfe5ff, #e9f7ff);
+}
+
+body.theme-clear-night {
+  --bg-hero: linear-gradient(180deg, #0f1d3d, #1f325f);
+  --card: #15274f;
+  --text: #edf3ff;
+  --muted: #b7c7eb;
+}
+
+body.theme-rain {
+  --bg-hero: linear-gradient(180deg, #9cb6d3, #cfdeef);
+}
+
+body.theme-cloudy {
+  --bg-hero: linear-gradient(180deg, #d3dae4, #eef2f7);
+}
+
+body.theme-snow {
+  --bg-hero: linear-gradient(180deg, #dff4ff, #f5fbff);
 }
 
 .app {
-  max-width: 880px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 2rem 1rem 4rem;
 }
@@ -39,7 +64,8 @@ header p {
 
 .search-card,
 .result,
-.status {
+.status,
+.panel {
   background: var(--card);
   border-radius: 12px;
   padding: 1rem;
@@ -114,21 +140,63 @@ button {
   color: var(--low);
 }
 
-.source {
+.source,
+.subtle {
   color: var(--muted);
+}
+
+.source {
   margin-top: 0;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 0.75rem;
 }
 
-.grid article {
+.grid article,
+.metar {
   border: 1px solid #e2e8ff;
   border-radius: 10px;
   padding: 0.75rem;
+}
+
+.panel {
+  margin-top: 0.9rem;
+}
+
+.panel-head h3 {
+  margin: 0;
+}
+
+.panel-head p {
+  margin: 0.3rem 0 0.7rem;
+}
+
+.map {
+  height: 320px;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.6rem;
+}
+
+.forecast-day {
+  border: 1px solid #e2e8ff;
+  border-radius: 10px;
+  padding: 0.6rem;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.forecast-day h4 {
+  margin: 0 0 0.35rem;
+  font-size: 0.95rem;
 }
 
 .hidden {
